@@ -29,7 +29,7 @@ class Channel extends Model
 
     }
 
-    public function vedios(){
+    public function videos(){
 
         return $this->hasMany(Video::class);
     }

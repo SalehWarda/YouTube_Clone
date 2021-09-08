@@ -13,8 +13,15 @@ class CreateVideo extends Component
     use WithFileUploads;
 
     public Channel $channel;
-    public Video   $vedio;
+    public Video   $video;
     public $videoFile;
+
+
+    protected  $rules = [
+
+        'videoFile' => 'required|file|max:1228800'
+
+    ];
 
 
     public function mount(Channel $channel){
@@ -32,7 +39,40 @@ class CreateVideo extends Component
      public function fileCompleted()
     {
 
-        dd('saleh');
+       // validation
+
+       $this->validate();
+
+    //    // save in folder
+       if($this->videoFile){
+
+
+
+        $path =   $this->videoFile->storeAs('images/channel '. $this->channel->name , $this->videoFile->getClientOriginalName(),'images' );
+
+       }
+
+       // save in DB
+
+      $this->video = $this->channel->videos()->create([
+
+        'title' => 'untitle',
+        'description' => 'null',
+        'uid'  => uniqid(true),
+        'visibility'  => 'private',
+        'path'   => $path
+
+
+       ]);
+       //redirect to edit page
+
+       return redirect()->route('video.edit',[
+
+        'channel' => $this->channel,
+        'video'   => $this->video,
+       ]);
+
+
     }
 
 

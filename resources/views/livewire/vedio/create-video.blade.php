@@ -25,12 +25,12 @@
                         <form  x-show="!isUploading">
                             <input type="file" wire:model="videoFile">
 
-                            {{-- @error('videoFile')
 
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror --}}
                         </form>
+                        @error('videoFile')
 
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
             </div>
