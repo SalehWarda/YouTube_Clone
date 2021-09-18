@@ -46,6 +46,12 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
+                        @auth()
+                        <li class="nav-item">
+                            <a href="{{ route('video.all',['channel' => auth()->user()->channel])}}" class="nav-link">All Videos</a>
+                        </li>
+
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -104,7 +110,7 @@
         <main class="py-4">
             @yield('content')
 
-       
+
         </main>
     </div>
 

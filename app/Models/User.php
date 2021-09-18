@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Channel::class);
     }
+
+    public function owner(Video $video){
+
+        return $this->id == $video->channel->user_id;
+    }
 }

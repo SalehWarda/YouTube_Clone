@@ -19,15 +19,16 @@ class CreateVideosTable extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('uid');
+            $table->string('thumbnail_image')->nullable();
             $table->text('path')->nullable();
-            $table->string('processe_filed')->nullable();
+            $table->string('proccessed_file')->nullable();
             $table->enum('visibility' , ['public','private','unlisted'])->default('private');
 
-            $table->boolean('processed')->default(false);
+            $table->boolean('proccessed')->default(false);
             $table->boolean('allow_likes')->default(false);
             $table->boolean('allow_comments')->default(false);
 
-            $table->string('processing_percentage')->default(false);
+            $table->string('proccessing_percentage')->default(false);
 
             $table->foreign('channel_id')->references('id')->on('channels')->onDelete('cascade');
 

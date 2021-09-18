@@ -39,8 +39,9 @@ Route::middleware('auth')->group(function (){
 
 Route::middleware('auth')->group(function (){
 
-    Route::get('/video/{channel}/create',CreateVideo::class)->name('video.create');
+    Route::get('/videos/{channel}/create',CreateVideo::class)->name('video.create');
     Route::get('/video/{channel}/{video}/edit',EditVideo::class)->name('video.edit');
-    Route::get('/video/{channel}',AllVideo::class)->name('video.all');
-    Route::get('/video/{channel}/create',CreateVideo::class)->name('video.create');
+    Route::get('/videos/{channel}',AllVideo::class)->name('video.all');
+    Route::get('/videos/{channel}/create',CreateVideo::class)->name('video.create');
+    Route::get('/videos/{channel}',AllVideo::class)->name('video.all');
 });
