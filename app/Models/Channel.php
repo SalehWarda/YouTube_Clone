@@ -34,4 +34,13 @@ class Channel extends Model
         return $this->hasMany(Video::class);
     }
 
+    public function getPictureAttribute()
+    {
+
+        if ($this->image) {
+            return '/images/channel '.$this->name. '/' . $this->image;
+        } else {
+            return '/images/' . 'default.png';
+        }
+    }
 }

@@ -16,9 +16,13 @@
     <script defer src="https://unpkg.com/alpinejs@3.2.4/dist/cdn.min.js"></script>
 
 
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+
+@stack('custom-css')
 
     <!-- Matirialize icon -->
 
@@ -27,6 +31,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- custom -->
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
     @livewireStyles
 
@@ -86,7 +93,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{route('channel.edit',['channel' => \Illuminate\Support\Facades\Auth::user()->channel])}}" >
+                                    <a class="dropdown-item" href="{{route('channel.index',['channel' => \Illuminate\Support\Facades\Auth::user()->channel])}}" >
                                         {{ \Illuminate\Support\Facades\Auth::user()->channel->name }}
                                     </a>
 
@@ -114,7 +121,8 @@
         </main>
     </div>
 
-    @livewireScripts
 
+    @livewireScripts
+    @stack('scripts')
 </body>
 </html>

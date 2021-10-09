@@ -4,6 +4,8 @@ use App\Http\Controllers\ChannelController;
 use App\Http\Livewire\Vedio\AllVideo;
 use App\Http\Livewire\Vedio\CreateVideo;
 use App\Http\Livewire\Vedio\EditVideo;
+use App\Http\Livewire\Vedio\WatchVideo;
+use App\Models\Channel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +21,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+ return view('welcome');
 });
 
 Auth::routes();
@@ -45,3 +48,6 @@ Route::middleware('auth')->group(function (){
     Route::get('/videos/{channel}/create',CreateVideo::class)->name('video.create');
     Route::get('/videos/{channel}',AllVideo::class)->name('video.all');
 });
+
+Route::get('/watch/{video}', WatchVideo::class)->name('video.watch');
+Route::get('/channels/{channel}', [ChannelController::class, 'index'])->name('channel.index');
