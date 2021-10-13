@@ -6,6 +6,7 @@ use App\Models\Channel;
 use Illuminate\Http\Request;
 
 class ChannelController extends Controller
+
 {
     //
 
@@ -13,6 +14,7 @@ class ChannelController extends Controller
     {
 
         return view('channel.index', compact('channel'));
+
     }
 
 

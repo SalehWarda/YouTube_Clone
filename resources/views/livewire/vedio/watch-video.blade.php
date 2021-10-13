@@ -52,9 +52,29 @@
                     </div>
                 </div>
 
+                <hr />
                 <div class="row">
-                    <div class="col-md-12"></div>
+                    <div class="col-md-12">
+
+                        <livewire:channel.channel-info :channel="$video->channel"
+                                                       />
+
+                    </div>
                 </div>
+
+                <hr />
+
+                <h4> {{$video->AllCommentsCount()}} Comment</h4>
+
+            @auth()
+                    <div class="my-2">
+                    <livewire:comment.new-comment  :video="$video" :col=0 :key="$video->id" />
+                    </div>
+
+                @endauth
+                <livewire:comment.all-comments :video="$video" />
+
+
             </div>
             <div class="col-md-4"></div>
         </div>

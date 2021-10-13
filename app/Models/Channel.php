@@ -43,4 +43,14 @@ class Channel extends Model
             return '/images/' . 'default.png';
         }
     }
+
+    public function subscriptions(){
+
+        return $this->hasMany(Subscription::class);
+    }
+
+    public function subscribers(){
+
+        return $this->subscriptions->count();
+    }
 }

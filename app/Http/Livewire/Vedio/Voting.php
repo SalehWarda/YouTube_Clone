@@ -28,7 +28,7 @@ class Voting extends Component
 
         $this->like = $this->video->likes->count();
         $this->dislike = $this->video->dislikes->count();
-        return view('livewire.vedio.voting')->extends('layouts.app');;
+        return view('livewire.vedio.voting')->extends('layouts.app');
     }
 
 
