@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChannelController;
+use App\Http\Controllers\SearchController;
 use App\Http\Livewire\Vedio\AllVideo;
 use App\Http\Livewire\Vedio\CreateVideo;
 use App\Http\Livewire\Vedio\EditVideo;
@@ -22,7 +23,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
- return view('welcome');
+      // if auth get sucscribed Channel videos
+
+    if (Auth::check()){
+
+        $channels = Auth::user()->subscribedChannels()->with('videos')->get()->pluck('videos');
+
+    }else{
+
+        // else  get all video
+
+        $channels = Channel::get()->pluck('videos');
+
+    }
+
+
+     return view('welcome',compact('channels'));
 });
 
 Auth::routes();
@@ -51,3 +67,4 @@ Route::middleware('auth')->group(function (){
 
 Route::get('/watch/{video}', WatchVideo::class)->name('video.watch');
 Route::get('/channels/{channel}', [ChannelController::class, 'index'])->name('channel.index');
+Route::get('/search', [SearchController::class, 'search'])->name('searchVideo');
